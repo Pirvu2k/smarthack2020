@@ -7,8 +7,10 @@
     ];
 
     tinymce.init({
+        plugins: 'lists',
+        entity_encoding: 'raw',
         selector: 'textarea#createPaper',
-        height: 250,
+        height: 500,
         setup: function (editor) {
             editor.ui.registry.addAutocompleter('defaultFields', {
                 ch: "{",

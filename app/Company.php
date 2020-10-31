@@ -17,4 +17,8 @@ class Company extends Model
     public function admins() {
         return $this->belongsToMany('App\User', 'company_admins');
     }
+
+    public function documents() {
+        return $this->hasMany('App\Document');
+    }
 }
