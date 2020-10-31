@@ -45,7 +45,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#team">Team</a></li>
@@ -81,8 +81,11 @@
       </h1>
       <h2>We are team of talanted designers making websites with Bootstrap</h2>
       <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-        <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>
+        <a href="{{route('login')}}" class="btn btn-primary btn-lg sizebtn">Log In</a>
+        <a href="#" class="btn btn-outline-primary btn-lg ml-2 sizebtn">Sign Up</a>
+        <!-- <button type="button" class="btn btn-primary">Log In</button>
+        <button type="button" class="btn btn-outline-primary ml-2">Register</button> -->
+
       </div>
     </div>
   </section><!-- End Hero -->
