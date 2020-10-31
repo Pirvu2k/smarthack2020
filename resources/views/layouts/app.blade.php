@@ -35,11 +35,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         @auth
-                            @if(count(Auth::user()->companies) > 0)
-                                <a class="nav-link" href="{{route('paper.create')}}">Adauga document </a>
-                                <a class="nav-link" href="{{route('admin.companies.list')}}">Institutii</a>
-                                <a class="nav-link" href="{{route('admin.users.pending')}}">Cereri de cont</a>
-                            @endif
+                            <a class="nav-link" href="{{route('companies.list')}}">Institutii</a>
                         @endauth
                     </ul>
 
@@ -67,7 +63,14 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    @if(count(Auth::user()->companies) > 0)
+                                        <a class="dropdown-item" href="{{route('paper.create')}}">Adauga document </a>
+                                        <a class="dropdown-item" href="{{route('admin.companies.list')}}">Institutii (Admin)</a>
+                                    @endif
 
+                                    @if(Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{route('admin.users.pending')}}">Cereri de cont</a>
+                                    @endif
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
