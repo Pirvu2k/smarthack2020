@@ -4,12 +4,14 @@
         { text: 'last_name', value: '{last_name}' },
         { text: 'address', value: '{address}' },
         { text: 'phone_number', value: '{phone_number}' },
+        { text: 'signature', value: '{signature}' },
     ];
 
     tinymce.init({
-        plugins: 'lists',
+        plugins: 'lists preview',
         entity_encoding: 'raw',
         selector: 'textarea#createPaper',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | preview',
         height: 500,
         setup: function (editor) {
             editor.ui.registry.addAutocompleter('defaultFields', {

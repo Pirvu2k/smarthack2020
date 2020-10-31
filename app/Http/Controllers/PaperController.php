@@ -97,7 +97,7 @@ class PaperController extends Controller
     }
 
     public function list(Request $request) {
-        $userDocuments = UserDocument::where('user_id', Auth::user()->id)->get();
+        $userDocuments = UserDocument::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
         return view('paper.list', ['userDocuments' => $userDocuments]);
     }
