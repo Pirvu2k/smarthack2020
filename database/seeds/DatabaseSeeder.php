@@ -54,6 +54,13 @@ class DatabaseSeeder extends Seeder
         $model->city_id = 1;
         $model->save();
 
+        $model = new Company;
+        $model->name = 'Casa de pensii Bucuresti';
+        $model->phone = '021020310';
+        $model->address = 'Str. Viitorului 310A, 174239, Bucuresti, Sector 3';
+        $model->city_id = 1;
+        $model->save();
+
         User::create([
             'first_name' => 'Popescu',
             'last_name' => 'Andrei',
@@ -64,7 +71,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('company_admins')->insert([
-            ['user_id' => 1, 'company_id' => 1]
+            ['user_id' => 1, 'company_id' => 1],
+            ['user_id' => 1, 'company_id' => 2]
         ]);
     }
 }

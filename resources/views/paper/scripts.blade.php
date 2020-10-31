@@ -1,11 +1,9 @@
 <script>
     var specialChars = [
-        { text: 'firstName', value: '{firstName}' },
-        { text: 'lastName', value: '{lastName}' },
+        { text: 'first_name', value: '{first_name}' },
+        { text: 'last_name', value: '{last_name}' },
         { text: 'address', value: '{address}' },
-        { text: 'phone', value: '{phone}' },
-        { text: 'IDN', value: '{IDN}' },
-        { text: 'ICSeries', value: '{ICSeries}' },
+        { text: 'phone_number', value: '{phone_number}' },
     ];
 
     tinymce.init({
