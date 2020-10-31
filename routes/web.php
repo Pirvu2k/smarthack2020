@@ -24,7 +24,10 @@ Route::middleware(['auth', 'confirmed'])->group(function() {
     Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
     Route::get('/admin/companies', 'AdminController@list')->name('admin.companies.list');
     Route::get('/admin/c/{company_id}/', 'AdminController@showCompany')->name('admin.company.documents');
-
+    Route::get('/complete/paper/{doc}', 'PaperController@showPaper')->name('paper.complete');
+    Route::post('/complete/paper/{doc}', 'PaperController@submitPaper')->name('paper.submit');
+    Route::get('/document/{id}/pdf', 'PaperController@pdf')->name('paper.pdf');
+  
     Route::middleware(['admin'])->group(function(){
         Route::get('/admin/users/pending', 'AdminController@pendingUsers')->name('admin.users.pending');
         Route::get('/admin/users/pending/{user_id}', 'AdminController@pendingUser')->name('admin.user.pending');
