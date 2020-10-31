@@ -59,7 +59,7 @@
       </h1>
       <h2>We are team of talanted designers making websites with Bootstrap</h2>
       <div class="d-flex">
-        <a href="#" class="btn btn-primary btn-lg sizebtn">Log In</a>
+        <a href="{{route('login')}}" class="btn btn-primary btn-lg sizebtn">Log In</a>
         <a href="#" class="btn btn-outline-primary btn-lg ml-2 sizebtn">Sign Up</a>
         <!-- <button type="button" class="btn btn-primary">Log In</button>
         <button type="button" class="btn btn-outline-primary ml-2">Register</button> -->
