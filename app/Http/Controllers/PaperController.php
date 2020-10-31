@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\UserDocument;
 use Illuminate\Http\Request;
 use App\Document;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Comment\Doc;
 use Spipu\Html2Pdf\Html2Pdf;
@@ -14,11 +16,21 @@ class PaperController extends Controller
         return view('paper.create');
     }
 
-    public function pdf($id) {
-        $document = Document::find($id);
+    public function pdf($doc, $content) {
         $html2pdf = new Html2Pdf('P', 'A4', 'en', true, 'UTF-8', array(16, 16, 12, 8), true);
-        $html2pdf->writeHTML($document->content);
-        return $html2pdf->output($document->title.'.pdf');
+        $html2pdf->writeHTML($content);
+        $doc_name = $doc->title . Auth::user()->first_name . Auth::user()->last_name . Carbon::now()->timestamp . '.pdf';
+        $saved_path = "documents/" . $doc_name;
+        $name = storage_path("app/public/") . $saved_path;
+        $html2pdf->output($name, 'F');
+        $path = str_replace("public/", "", $saved_path);
+
+        $new_doc = new UserDocument();
+        $new_doc->name = $doc_name;
+        $new_doc->path = $path;
+        $new_doc->user_id = Auth::user()->id;
+        $new_doc->document_id = $doc->id;
+        $new_doc->save();
     }
 
     public function addPaper(Request $request) {
@@ -69,7 +81,7 @@ class PaperController extends Controller
             $content = str_replace('{' . $key . '}', $value, $content);
         }
 
-
+        $this->pdf($doc, $content);
 
         return redirect('home');
     }
