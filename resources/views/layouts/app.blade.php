@@ -34,7 +34,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @auth
+                            @if(count(Auth::user()->companies) > 0)
+                                <a class="nav-link" href="{{route('paper.create')}}">Adauga document </a>
+                                <a class="nav-link" href="{{route('admin.companies.list')}}">Institutii</a>
+                            @endif
+                        @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
