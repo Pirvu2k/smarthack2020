@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AdditionalFile;
+use App\UserAdditionalFile;
 use App\UserDocument;
 use Illuminate\Http\Request;
 use App\Document;
@@ -46,6 +48,17 @@ class PaperController extends Controller
         $document->company_id = $request->company;
         $document->save();
 
+        if ($request['additional_files'] != null) {
+            $additional_files = explode(",", $request['additional_files']);
+
+            foreach ($additional_files as $file) {
+                $instance_of_file = new AdditionalFile();
+                $instance_of_file->name = str_replace(" ","_",trim($file));
+                $instance_of_file->document_id = $document->id;
+                $instance_of_file->save();
+            }
+        }
+
         return redirect()->back()->with('success', "Document adaugat cu succes!");
     }
 
@@ -75,6 +88,8 @@ class PaperController extends Controller
 
         $data['content'] = $content;
 
+        $data['additional_files'] = $doc->additionalFiles;
+
         return view('paper.completePaper', $data);
     }
 
@@ -92,6 +107,18 @@ class PaperController extends Controller
         }
 
         $this->pdf($doc, $content);
+
+        foreach ($doc->additionalFiles as $file) {
+            $picture_path = $request['file_' . $file->id]->store('public/additionalFiles');
+            $picture_path = str_replace("public/", "", $picture_path);
+
+            $instance_of_new_file = new UserAdditionalFile();
+            $instance_of_new_file->additional_file_id = $file->id;
+            $instance_of_new_file->name = $file->name . Auth::user()->getFullName();
+            $instance_of_new_file->user_id = Auth::user()->id;
+            $instance_of_new_file->path = $picture_path;
+            $instance_of_new_file->save();
+        }
 
         return redirect('home');
     }

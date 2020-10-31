@@ -38,10 +38,22 @@
             </select>
         </div>
 
-        <textarea id="createPaper" name="content">
-        </textarea>
+        <div class="form-group">
+            <textarea id="createPaper" name="content">
+            </textarea>
+        </div>
 
-        <input type="submit" value="Trimite">
+        <div class="form-group">
+            <p class="m-0 p-0 text-left">
+                Adaugati fisiere aditionale, separate prin virgula. <br>
+                (Optional)
+            </p>
+            <input type="text" class="form-control" name="additional_files">
+        </div>
+
+        <div class="w-100 d-flex justify-content-center">
+            <input type="submit" class="btn btn-success mt-5" value="Trimite">
+        </div>
     </form>
     </div>
 @endsection

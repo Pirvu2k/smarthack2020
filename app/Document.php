@@ -10,6 +10,10 @@ class Document extends Model
         return $this->belongsTo('App\Company');
     }
 
+    public function additionalFiles() {
+        return $this->hasMany('App\AdditionalFile');
+    }
+
     public function getFields() {
         preg_match_all('/{[^\}]+}/', $this->content, $matches, PREG_OFFSET_CAPTURE);
 
