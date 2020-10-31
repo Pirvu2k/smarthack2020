@@ -38,6 +38,7 @@
                             @if(count(Auth::user()->companies) > 0)
                                 <a class="nav-link" href="{{route('paper.create')}}">Adauga document </a>
                                 <a class="nav-link" href="{{route('admin.companies.list')}}">Institutii</a>
+                                <a class="nav-link" href="{{route('admin.users.pending')}}">Cereri de cont</a>
                             @endif
                         @endauth
                     </ul>
