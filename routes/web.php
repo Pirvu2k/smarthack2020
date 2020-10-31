@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
 Auth::routes();
 
 Route::middleware(['auth', 'confirmed'])->group(function() {
@@ -37,5 +33,3 @@ Route::middleware(['auth', 'confirmed'])->group(function() {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-
