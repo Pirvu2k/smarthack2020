@@ -56,6 +56,8 @@ class RegisterController extends Controller
             'phone' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'self_photo' => ['required'],
+            'id_photo' =>['required'],
         ]);
     }
 
@@ -67,6 +69,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $id_path = $data['id_photo']->store('public/users');
+        $id_path = str_replace("public/", "", $id_path);
+
+        $picture_path = $data['self_photo']->store('public/users');
+        $picture_path = str_replace("public/", "", $picture_path);
+
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
@@ -74,6 +82,8 @@ class RegisterController extends Controller
             'phone_number' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'id_path' => $id_path,
+            'picture_verification_path' => $picture_path,
         ]);
     }
 }
