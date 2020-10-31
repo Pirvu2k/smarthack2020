@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Document;
 
 class PaperController extends Controller
 {
@@ -11,9 +12,19 @@ class PaperController extends Controller
     }
 
     public function addPaper(Request $request) {
-        dd($request->all());
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'company' => 'required'
+        ]);
 
-        return redirect()->back();
+        $document = new Document;
+        $document->title = $request->title;
+        $document->content = $request->input('content');
+        $document->company_id = $request->company;
+        $document->save();
+
+        return redirect()->back()->with('success', "Document adaugat cu succes!");
     }
 
 }
