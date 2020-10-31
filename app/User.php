@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function companies() {
         return $this->belongsToMany('App\Company', 'company_admins');
     }
+
+    public function additionalFiles() {
+        return $this->hasMany('App\UserAdditionalFile');
+    }
 }
