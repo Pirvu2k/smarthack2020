@@ -65,7 +65,11 @@ class PaperController extends Controller
 
         foreach ($matches as $matches_array) {
             foreach ($matches_array as $match) {
-                $content = str_replace($match[0], "<input type=\"text\" required name=\"" . trim($match[0], "{}") . "\">", $content);
+                if (trim($match[0], "{} ") != "signature") {
+                    $content = str_replace($match[0], "<input type=\"text\" required name=\"" . trim($match[0], "{} ") . "\">", $content);
+                } else {
+                    $content = str_replace($match[0], "<input type=\"text\" value=\"signature\" required readonly name=\"" . trim($match[0], "{} ") . "\">", $content);
+                }
             }
         }
 
@@ -78,7 +82,13 @@ class PaperController extends Controller
         $content = $doc->content;
 
         foreach ($request->all() as $key => $value) {
-            $content = str_replace('{' . $key . '}', $value, $content);
+            if ($key != "signature") {
+                $content = str_replace('{' . $key . '}', $value, $content);
+            } else {
+                $sign = md5(Auth::user()->first_name . Auth::user()->last_name . Carbon::now()->timestamp);
+                $img = "<img src=\"https://chart.googleapis.com/chart?chs=70x70&cht=qr&chl=" . $sign . "\" title=\"Link to Google.com\" />  <p style=\"margin: 0px; padding :0px\"> " . Auth::user()->getFullName() . " </p><br> <p style=\"margin: 0px; padding :0px\">Certified by Digi Scriptum</p>";
+                $content = str_replace('{' . $key . '}', $img, $content);
+            }
         }
 
         $this->pdf($doc, $content);
