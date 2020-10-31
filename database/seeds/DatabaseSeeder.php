@@ -67,6 +67,8 @@ class DatabaseSeeder extends Seeder
             'address' => 'Str. Doamne Ajuta, nr.120, 233234, Bucuresti, Romania',
             'phone_number' => '0722333444',
             'email' => 'admin@admin.com',
+            'is_admin' => 1,
+            'confirmed' => 1,
             'password' => Hash::make('superparola'),
         ]);
 

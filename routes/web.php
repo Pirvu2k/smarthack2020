@@ -23,8 +23,19 @@ Route::get('/login', function () {
 
 Auth::routes();
 
+Route::middleware(['auth', 'confirmed'])->group(function() {
+    Route::get('/paper/create', 'PaperController@create')->name('paper.create');
+    Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
+    Route::get('/admin/companies', 'AdminController@list')->name('admin.companies.list');
+    Route::get('/admin/c/{company_id}/', 'AdminController@showCompany')->name('admin.company.documents');
+
+    Route::middleware(['admin'])->group(function(){
+        Route::get('/admin/users/pending', 'AdminController@pendingUsers')->name('admin.users.pending');
+        Route::get('/admin/users/pending/{user_id}', 'AdminController@pendingUser')->name('admin.user.pending');
+        Route::post('/user/activate/{user_id}', 'AdminController@activateUser')->name('user.activate');
+    });
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/paper/create', 'PaperController@create')->name('paper.create');
-Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
-Route::get('/admin/companies', 'AdminController@list')->name('admin.companies.list')->middleware('auth');
-Route::get('/admin/c/{company_id}/', 'AdminController@showCompany')->name('admin.company.documents')->middleware('auth');
+
+
