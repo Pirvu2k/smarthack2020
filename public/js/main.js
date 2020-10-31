@@ -1,6 +1,6 @@
 /**
-* Template Name: BizLand - v1.1.1
-* Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+* Template Name: DigiScriptum - v1.1.1
+* Template URL: https://bootstrapmade.com/DigiScriptum-bootstrap-business-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
