@@ -20,5 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/paper/create', 'PaperController@create')->name('paper.create');
-Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
+Route::get('/paper/create', 'PaperController@create')->name('paper.create')->middleware('auth');
+Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation')->middleware('auth');
+
+Route::get('/complete/paper/{doc}', 'PaperController@showPaper')->name('paper.complete')->middleware('auth');
+Route::post('/complete/paper/{doc}', 'PaperController@submitPaper')->name('paper.submit')->middleware('auth');
