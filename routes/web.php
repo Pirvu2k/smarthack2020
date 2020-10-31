@@ -22,6 +22,7 @@ Auth::routes();
 Route::middleware(['auth', 'confirmed'])->group(function() {
     Route::get('/companies', 'CompanyController@list')->name('companies.list');
     Route::get('/c/{company_id}', 'CompanyController@show')->name('companies.show');
+    Route::get('/documents', 'PaperController@list')->name('documents.list');
 
     Route::get('/paper/create', 'PaperController@create')->name('paper.create');
     Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
