@@ -36,6 +36,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <a class="nav-link" href="{{route('companies.list')}}">Institutii</a>
+                            <a class="nav-link" href="{{route('documents.list')}}">Documentele mele</a>
                         @endauth
                     </ul>
 

@@ -86,4 +86,9 @@ class PaperController extends Controller
         return redirect('home');
     }
 
+    public function list(Request $request) {
+        $userDocuments = UserDocument::where('user_id', Auth::user()->id)->get();
+
+        return view('paper.list', ['userDocuments' => $userDocuments]);
+    }
 }
