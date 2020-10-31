@@ -17,5 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/paper/create', 'PaperController@create')->name('paper.create');
 Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
