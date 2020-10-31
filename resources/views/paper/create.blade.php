@@ -8,6 +8,7 @@
 {{--            selector: '#createPaper'--}}
 {{--        });--}}
 {{--    </script>--}}
+    <link rel="stylesheet" href="{{asset('css/paper/paper.css')}}"/>
 </head>
 
 <body>

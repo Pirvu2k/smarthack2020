@@ -12,10 +12,10 @@
         selector: 'textarea#createPaper',
         height: 250,
         setup: function (editor) {
-            editor.ui.registry.addAutocompleter('specialchars', {
-                ch: '{',
+            editor.ui.registry.addAutocompleter('defaultFields', {
+                ch: "{",
                 minChars: 0,
-                columns: 'auto',
+                columns: 1,
                 fetch: function (pattern) {
                     var matchedChars = specialChars.filter(function (char) {
                         return char.text.indexOf(pattern) !== -1;
@@ -26,7 +26,6 @@
                         return {
                             value: char.value,
                             text: char.text,
-                            icon: char.value
                         }
                     });
                     resolve(results);
