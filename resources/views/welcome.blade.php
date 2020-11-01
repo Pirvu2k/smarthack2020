@@ -123,7 +123,7 @@
         <div class="section-title">
           <h2>About</h2>
           <h3>Despre <span>DigiScriptum</span></h3>
-          <p>Echipa DigiScriptum crede in puterea tehnologiei si in digitalizare. Astfel, oferim o solutie inovativa si simpla de a semna si completa documente online.</p>
+          <p>Solutia noastra se adreseaza institutiilor publice si companiilor mici spre medii care doresc o solutie out-of-the-box pentru semnarea si management-ul documentelor.</p>
         </div>
 
         <div class="row">
@@ -142,7 +142,7 @@
               <li>
                 <i class="fas fa-cog"></i>
                 <div>
-                  <p>Actualizare automata a contractelor in cazul in care iti schimbi domiciliul, numele, orice legat de actul de identitate.</p>
+                  <p>Sporeste eficienta personalului lasand sarcinile plictisitoare si repetitive pe seama noastra. Un pas inainte pentru digitalizare!</p>
                 </div>
               </li>
               <li>
