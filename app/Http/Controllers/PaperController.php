@@ -33,6 +33,8 @@ class PaperController extends Controller
         $new_doc->user_id = Auth::user()->id;
         $new_doc->document_id = $doc->id;
         $new_doc->save();
+
+        return $new_doc;
     }
 
     public function addPaper(Request $request) {
@@ -117,7 +119,7 @@ class PaperController extends Controller
             }
         }
 
-        $this->pdf($doc, $content);
+        $new_doc = $this->pdf($doc, $content);
 
         foreach ($doc->additionalFiles as $file) {
             $picture_path = $request['file_' . $file->id]->store('public/additionalFiles');
@@ -128,6 +130,7 @@ class PaperController extends Controller
             $instance_of_new_file->name = $file->name . Auth::user()->getFullName();
             $instance_of_new_file->user_id = Auth::user()->id;
             $instance_of_new_file->path = $picture_path;
+            $instance_of_new_file->user_document_id = $new_doc->id;
             $instance_of_new_file->save();
         }
 

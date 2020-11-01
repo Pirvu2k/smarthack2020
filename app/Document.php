@@ -24,4 +24,8 @@ class Document extends Model
         return $matches;
     }
 
+    public function hasFiles() {
+        return $this->additionalFiles->count() != 0;
+    }
+
 }
