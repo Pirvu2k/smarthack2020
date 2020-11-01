@@ -7,6 +7,21 @@
   <link href="{{asset('css/form_login_style.css')}}" rel="stylesheet">
 @endsection
 
+@section('styles')
+
+<style type="text/css">
+    body {
+            background: url({{asset("img/login-bg-op.png")}}) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+              -o-background-size: cover;
+              background-size: cover;
+              background-opacity: 0.3;
+        }
+</style>
+
+@endsection
+
 @section('content')
 <div class="wrapper fadeInDown">
     <div id="formContent">
