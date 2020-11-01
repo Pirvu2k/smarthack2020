@@ -6,12 +6,14 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
     <title>{{ config('app.name', 'DigiScriptum.') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('headscripts')
+
+    @yield('styles')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -36,7 +38,7 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                             <a class="nav-link" href="{{route('companies.list')}}">Institutii</a>
-                            <a class="nav-link" href="{{route('documents.list')}}">Documentele mele</a>
+                            <a class="nav-link" href="{{route('documents.list')}}">Documente semnate</a>
                         @endauth
                     </ul>
 
@@ -66,7 +68,7 @@
                                         {{ __('Logout') }}
                                     </a>
                                     @if(count(Auth::user()->companies) > 0)
-                                        <a class="dropdown-item" href="{{route('paper.create')}}">Adauga document </a>
+                                        <a class="dropdown-item" href="{{route('paper.create')}}">Creeaza sablon</a>
                                         <a class="dropdown-item" href="{{route('admin.companies.list')}}">Institutii (Admin)</a>
                                     @endif
 
