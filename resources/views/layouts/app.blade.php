@@ -19,6 +19,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/notification.css') }}" rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 </head>
 <body>
     <div id="app">
@@ -38,7 +41,32 @@
                             <a class="nav-link" href="{{route('companies.list')}}">Institutii</a>
                             <a class="nav-link" href="{{route('documents.list')}}">Documentele mele</a>
                         @endauth
+
+                            @if (\Illuminate\Support\Facades\Auth::user()->isAdmin())
+                                <div class="dropdown ml-auto">
+                                    <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" >
+                                        <i class="fa fa-bell" aria-hidden="true"></i>
+                                    </a>
+
+                                    <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+
+                                        <div class="notifications-wrapper">
+                                            @foreach (\Illuminate\Support\Facades\Auth::user()->notifications as $notification)
+                                                <div class="notification-item" style="background: @if($notification->is_seen == 0) grey @else #D3D3D3 @endif">
+                                                    <p class="item-title">{{$notification->text}}</p><br>
+
+                                                </div>
+                                            @endforeach
+
+                                        </div>
+                                    </ul>
+
+                                </div>
+
+                            @endif
+
                     </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

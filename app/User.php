@@ -60,6 +60,10 @@ class User extends Authenticatable
     }
 
     public function notifications() {
-        return $this->hasMany('App\Notifications');
+        return $this->hasMany('App\Notification');
+    }
+
+    public function isAdmin() {
+        return $this->is_admin == 1;
     }
 }
