@@ -1,4 +1,4 @@
-# smarthack2020
+# smarthack2020 winning project
 Smarthack 2020 repo for team Technogods.
 
 # Contributors
