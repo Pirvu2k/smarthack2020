@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>DigiScriptum Bootstrap Template - Index</title>
+  <title>DigiScriptum</title>
 
   <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <meta content="" name="description">
