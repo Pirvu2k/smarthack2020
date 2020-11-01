@@ -10,6 +10,10 @@ class Document extends Model
         return $this->belongsTo('App\Company');
     }
 
+    public function userDocuments() {
+        return $this->hasMany('App\UserDocument');
+    }
+
     public function additionalFiles() {
         return $this->hasMany('App\AdditionalFile');
     }
