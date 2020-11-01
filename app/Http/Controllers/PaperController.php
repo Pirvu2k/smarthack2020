@@ -101,4 +101,25 @@ class PaperController extends Controller
 
         return view('paper.list', ['userDocuments' => $userDocuments]);
     }
+
+    public function update(Request $request, Document $doc) {
+        $data['paper'] = $doc;
+        return view('paper.update', $data);
+    }
+
+    public function updateDoc(Request $request, Document $doc) {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'company' => 'required'
+        ]);
+
+        $document = Document::find($doc->id);
+        $document->title = $request->title;
+        $document->content = $request->input('content');
+        $document->company_id = $request->company;
+        $document->save();
+
+        return redirect()->back()->with('success', "Document modificat cu succes!");
+    }
 }

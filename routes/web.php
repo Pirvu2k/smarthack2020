@@ -26,6 +26,8 @@ Route::middleware(['auth', 'confirmed'])->group(function() {
     Route::get('user/change_profile', 'UserController@show')->name('user.show');
     Route::post('user/change_profile', 'UserController@update')->name('update_profile');
     Route::get('/paper/create', 'PaperController@create')->name('paper.create');
+    Route::get('paper/update/{doc}', 'PaperController@update')->name('paper.update');
+    Route::post('paper/update/{doc}', 'PaperController@updateDoc')->name('paper.updateDoc');
     Route::post('/paper/create', 'PaperController@addPaper')->name('paper.creation');
     Route::get('/admin/companies', 'AdminController@list')->name('admin.companies.list');
     Route::get('/admin/c/{company_id}/', 'AdminController@showCompany')->name('admin.company.documents');

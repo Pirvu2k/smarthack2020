@@ -44,4 +44,11 @@ class User extends Authenticatable
     public function companies() {
         return $this->belongsToMany('App\Company', 'company_admins');
     }
+    
+    public function hasCompany($company_id) {
+        return $this->companies->contains(function($value, $key)use($company_id){
+            return $value->id == $company_id;
+                    });
+    }
+
 }
