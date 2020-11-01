@@ -4,11 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserDocument extends Model
+class AdditionalFile extends Model
 {
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
+    protected $fillable = ['name', 'document_id'];
+    protected $table = 'additional_files';
 
     public function document() {
         return $this->belongsTo('App\Document');

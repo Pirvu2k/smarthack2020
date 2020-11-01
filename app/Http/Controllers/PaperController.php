@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\AdditionalFile;
+use App\UserAdditionalFile;
 use App\UserDocument;
 use Illuminate\Http\Request;
 use App\Document;
@@ -31,6 +33,8 @@ class PaperController extends Controller
         $new_doc->user_id = Auth::user()->id;
         $new_doc->document_id = $doc->id;
         $new_doc->save();
+
+        return $new_doc;
     }
 
     public function addPaper(Request $request) {
@@ -46,7 +50,26 @@ class PaperController extends Controller
         $document->company_id = $request->company;
         $document->save();
 
+        if ($request['additional_files'] != null) {
+            $additional_files = explode(",", $request['additional_files']);
+
+            foreach ($additional_files as $file) {
+                $instance_of_file = new AdditionalFile();
+                $instance_of_file->name = str_replace(" ","_",trim($file));
+                $instance_of_file->document_id = $document->id;
+                $instance_of_file->save();
+            }
+        }
+
         return redirect()->back()->with('success', "Document adaugat cu succes!");
+    }
+
+    public function getSeriesNumber($company) {
+        $count = 0;
+        foreach($company->documents as $document) {
+            $count += $document->userDocuments->count();
+        };
+        return $count+1;
     }
 
     public function showPaper(Request $request, Document $doc) {
@@ -54,13 +77,16 @@ class PaperController extends Controller
 
         $matches = $doc->getFields();
         $content = $doc->content;
-
-        $fields = array("{first_name}", "{last_name}", "{phone_number}", "{address}");
+        
+        $fields = array("{first_name}", "{last_name}", "{phone_number}", "{address}", "{today_date}", "{series_number}");
         $changed_fields   = array("<input type=\"text\" name=\"first_name\" required readonly value=\"".Auth::user()->first_name."\">",
                                     "<input type=\"text\" name=\"last_name\" required readonly value=\"".Auth::user()->last_name."\">",
                                     "<input type=\"text\" name=\"phone_number\" required readonly value=\"".Auth::user()->phone_number."\">",
-                                    "<input type=\"text\" name=\"address\" required readonly value=\"".Auth::user()->address."\">");
-
+                                    "<input type=\"text\" name=\"address\" required readonly value=\"".Auth::user()->address."\">",
+                                    "<input type=\"text\" name=\"today_date\" required readonly value=\"".Carbon::now()->format('d.m.Y')."\">",
+                                    "<input type=\"text\" name=\"series_number\" required readonly value=\"".$this->getSeriesNumber($doc->company)."\">",
+                                );
+        
         $content = str_replace($fields, $changed_fields, $content);
 
         foreach ($matches as $matches_array) {
@@ -74,6 +100,8 @@ class PaperController extends Controller
         }
 
         $data['content'] = $content;
+
+        $data['additional_files'] = $doc->additionalFiles;
 
         return view('paper.completePaper', $data);
     }
@@ -91,7 +119,20 @@ class PaperController extends Controller
             }
         }
 
-        $this->pdf($doc, $content);
+        $new_doc = $this->pdf($doc, $content);
+
+        foreach ($doc->additionalFiles as $file) {
+            $picture_path = $request['file_' . $file->id]->store('public/additionalFiles');
+            $picture_path = str_replace("public/", "", $picture_path);
+
+            $instance_of_new_file = new UserAdditionalFile();
+            $instance_of_new_file->additional_file_id = $file->id;
+            $instance_of_new_file->name = $file->name . Auth::user()->getFullName();
+            $instance_of_new_file->user_id = Auth::user()->id;
+            $instance_of_new_file->path = $picture_path;
+            $instance_of_new_file->user_document_id = $new_doc->id;
+            $instance_of_new_file->save();
+        }
 
         return redirect('home');
     }

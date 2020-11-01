@@ -51,4 +51,7 @@ class User extends Authenticatable
                     });
     }
 
+    public function userAdditionalFiles() {
+        return $this->hasMany('App\UserAdditionalFile');
+    }
 }

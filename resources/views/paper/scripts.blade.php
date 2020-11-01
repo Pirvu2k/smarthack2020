@@ -5,6 +5,8 @@
         { text: 'address', value: '{address}' },
         { text: 'phone_number', value: '{phone_number}' },
         { text: 'signature', value: '{signature}' },
+        { text: 'today_date', value: '{today_date}' },
+        { text: 'series_number', value: '{series_number}' },
     ];
 
     tinymce.init({
