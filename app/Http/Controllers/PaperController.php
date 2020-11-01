@@ -7,6 +7,7 @@ use App\UserAdditionalFile;
 use App\UserDocument;
 use Illuminate\Http\Request;
 use App\Document;
+use App\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Comment\Doc;
@@ -135,6 +136,14 @@ class PaperController extends Controller
         }
 
         Auth::user()->companiesContracts()->attach($doc->company->id);
+
+        $notification = new Notification();
+        $notification->text = "Userul " . Auth::user()->getFullName() . " a completat documentul " . $doc->title;
+        $notification->user_id = Auth::user()->id;
+        $notification->company_id = $doc->company->id;
+        $notification->is_seen = 0;
+
+        $notification->save();
 
         return redirect('home');
     }

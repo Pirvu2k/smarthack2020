@@ -25,4 +25,8 @@ class Company extends Model
     public function users() {
         return $this->belongsToMany('App\User', 'user_company');
     }
+
+    public function notifications() {
+        return $this->hasMany('App\Notifications');
+    }
 }

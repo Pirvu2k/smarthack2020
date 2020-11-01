@@ -58,4 +58,8 @@ class User extends Authenticatable
     public function companiesContracts() {
         return $this->belongsToMany('App\Company', 'user_company');
     }
+
+    public function notifications() {
+        return $this->hasMany('App\Notifications');
+    }
 }
