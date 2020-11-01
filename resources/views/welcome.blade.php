@@ -18,7 +18,7 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=:wght@300&display=swap" rel="stylesheet"> -->
 
 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
   <!-- Vendor CSS Files -->
   <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
   <link href="{{asset('vendor/icofont/icofont.min.css')}}" rel="stylesheet">
@@ -38,7 +38,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="index.html">DigiScriptum<span>.</span></a></h1>
+      <h1 class="logo mr-auto"><a href="#">DigiScriptum<span>.</span></a></h1>
 
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt=""></a>-->
