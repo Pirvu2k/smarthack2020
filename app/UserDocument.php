@@ -13,4 +13,8 @@ class UserDocument extends Model
     public function document() {
         return $this->belongsTo('App\Document');
     }
+
+    public function userAdditionalFiles() {
+        return $this->hasMany('App\UserAdditionalFile');
+    }
 }

@@ -13,7 +13,7 @@ class AdditionalFile extends Model
         return $this->belongsTo('App\Document');
     }
 
-    public function users() {
+    public function userAdditionalFiles() {
         return $this->hasMany('App\UserAdditionalFile');
     }
 }
