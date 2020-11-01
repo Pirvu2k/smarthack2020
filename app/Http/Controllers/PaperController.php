@@ -77,7 +77,7 @@ class PaperController extends Controller
 
         $matches = $doc->getFields();
         $content = $doc->content;
-        
+
         $fields = array("{first_name}", "{last_name}", "{phone_number}", "{address}", "{today_date}", "{series_number}");
         $changed_fields   = array("<input type=\"text\" name=\"first_name\" required readonly value=\"".Auth::user()->first_name."\">",
                                     "<input type=\"text\" name=\"last_name\" required readonly value=\"".Auth::user()->last_name."\">",
@@ -86,7 +86,7 @@ class PaperController extends Controller
                                     "<input type=\"text\" name=\"today_date\" required readonly value=\"".Carbon::now()->format('d.m.Y')."\">",
                                     "<input type=\"text\" name=\"series_number\" required readonly value=\"".$this->getSeriesNumber($doc->company)."\">",
                                 );
-        
+
         $content = str_replace($fields, $changed_fields, $content);
 
         foreach ($matches as $matches_array) {
@@ -133,6 +133,8 @@ class PaperController extends Controller
             $instance_of_new_file->user_document_id = $new_doc->id;
             $instance_of_new_file->save();
         }
+
+        Auth::user()->companiesContracts()->attach($doc->company->id);
 
         return redirect('home');
     }

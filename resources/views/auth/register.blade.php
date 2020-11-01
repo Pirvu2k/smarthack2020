@@ -63,7 +63,7 @@
             <strong>{{ $message }}</strong>
         </span>
     @enderror
-    
+
     <input id="password-confirm" type="password" class="fadeIn third" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder='Confirm Password'">
 
         <div class="form-group row-ml-2">
