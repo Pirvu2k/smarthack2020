@@ -66,7 +66,7 @@
     
     <input id="password-confirm" type="password" class="fadeIn third" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password" onfocus="this.placeholder = ''" onblur="this.placeholder='Confirm Password'">
 
-        <div class="form-group row-ml-10">
+        <div class="form-group row-ml-2">
             <label for="self_photo" class="col-md-4 col-form-label text-md-right">{{ __('Picture of your ID') }}</label>
 
                 <input type="file"

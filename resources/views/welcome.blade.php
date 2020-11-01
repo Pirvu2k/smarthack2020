@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <title>DigiScriptum Bootstrap Template - Index</title>
+
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -80,7 +81,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <div class="icon"><i class="fas fa-tv"></i></div>
               <h4 class="title"><a href="">Eviti cozile</a></h4>
               <p class="description">Digitalizand procesul, am eliminat orice fel de stat la coada!</p>
             </div>
@@ -88,7 +89,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><i class="fas fa-couch"></i></div>
               <h4 class="title"><a href="">Mai confortabil</a></h4>
               <p class="description">Ai posibilitatea de a completa documentele din confortul casei tale.</p>
             </div>
@@ -96,7 +97,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <div class="icon"><i class="fas fa-baby"></i></div>
               <h4 class="title"><a href="">Usor de folosit</a></h4>
               <p class="description">Interfata intuitiva atat pentru oameni cat si pentru institutii.</p>
             </div>
@@ -104,7 +105,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="bx bx-world"></i></div>
+              <div class="icon"><i class="fas fa-globe"></i></i></div>
               <h4 class="title"><a href="">Aplicabilitate extinsa</a></h4>
               <p class="description">Institutii publice sau private, aici le gasesti pe toate!</p>
             </div>
@@ -127,25 +128,25 @@
 
         <div class="row">
           <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="img/icon.png" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
             <h3>De ce DigiScriptum?</h3>
             <ul>
               <li>
-                <i class="bx bx-store-alt"></i>
+                <i class="fas fa-user"></i>
                 <div>
                   <p>Punem clientul pe primul loc. Fie ca sunt partenerii nostri sau clientii lor, noi lucram in folosul lor, oferind experiente cat mai simple si complete.</p>
                 </div>
               </li>
               <li>
-                <i class="bx bx-images"></i>
+                <i class="fas fa-cog"></i>
                 <div>
                   <p>Actualizare automata a contractelor in cazul in care iti schimbi domiciliul, numele, orice legat de actul de identitate.</p>
                 </div>
               </li>
               <li>
-                <i class="bx bx-images"></i>
+                <i class="bx bx-time-five"></i>
                 <div>
                   <p>Prin automatizarea acestui proces speram sa eliminam orice frustrare din procesul de a semna documentele si sa va economisim timpul, banii si nervii.</p>
                 </div>
@@ -170,7 +171,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <div class="icon"><i class="fas fa-bolt"></i></div>
               <h4><a href="">Sabloane dinamice</a></h4>
               <p>Defineste-ti propriile sabloane si lasa sistemul nostru de auto-complete sa faca treaba pentru clientii tai.</p>
             </div>
@@ -178,7 +179,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
+              <div class="icon"><i class="fas fa-server"></i></div>
               <h4><a href="">Genereaza PDF</a></h4>
               <p>Partajare, printare si stocare securizata prin serverele noastre.</p>
             </div>
@@ -186,7 +187,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <div class="icon"><i class="fas fa-info"></i></div>
               <h4><a href="">Acces la clienti</a></h4>
               <p>Clientii pot deschide tichete, adresa intrebari direct din platforma, avand acces instant la parerile lor.</p>
             </div>
